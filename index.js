@@ -17,7 +17,7 @@ server.listen(PORT, () => {
 /** 
  * Mount bot-express
  */
-server.use("/bot/webhook", bot_express({
+server.use("/webhook", bot_express({
     language: "ja",
     messenger: {
         line: {
