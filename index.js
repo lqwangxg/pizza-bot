@@ -6,11 +6,12 @@
 const server = require("express")();
 const bot_express = require("bot-express");
 
+const PORT = process.env.PORT || 5000;
 /** 
  * Middleware Configuration
  */
-server.listen(process.env.PORT || 5000, () => {
-    console.log("server is running...");
+server.listen(PORT, () => {
+    console.log("server is running...PORT=", PORT);
 });
 
 /** 
