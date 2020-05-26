@@ -65,7 +65,8 @@ module.exports = class SkillBroadcast {
                     (response) => {
                         debug("Going to multicast following message.");
                         debug(response);
-                        await bot.line.multicast(event, line_user_ids, response);
+                        //await bot.line.multicast(event, line_user_ids, response);
+                        bot.line.multicast(event, line_user_ids, response);
                     }
                 )
             );
