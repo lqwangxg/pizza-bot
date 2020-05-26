@@ -1,7 +1,7 @@
 "use strict";
 
 const debug = require("debug")("bot-express:skill");
-const bot_user = require("../sample_service/bot-user");
+//const bot_user = require("../sample_service/bot-user");
 Promise = require("bluebird");
 
 /*
@@ -37,7 +37,10 @@ module.exports = class SkillBroadcast {
         let line_user_ids = [];
         let facebook_user_ids = [];
 
-        let users = await bot_user.get_list();
+        let users = [{
+            user_id:"U60f1a9eda60e8ec8945153756bdf6180",
+            messenger:"line"
+        }];
 
         // Create target user list based on messenger. !!!! We need to call multicast every 150 users. !!!!
         for (let user of users){
