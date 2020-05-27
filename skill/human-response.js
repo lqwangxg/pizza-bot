@@ -29,16 +29,18 @@ module.exports = class SkillHumanResponse {
                         ]
                     }
                 },
-                parser: (value, bot, event, context) => {
-                    return parser.parse("yes_no", value);
+                parser: async (value, bot, event, context) => {
+                    if (["はい", "Yes","OK","正"].includes(value)) {
+                        return value;
+                    }
+                    return false;
                 },
-                reaction: (error, value, bot, event, context) => {
+                reaction: async (error, value, bot, event, context) => {
                     debug(`error=${error}, value=${value}`);
                     if (error) return;
-                    if (["はい", "Yes","OK","正"].indexOf(value) < 0) {
-                        debug(`false 2に...`);
-                        return;
-                    }
+                    if (!value) return;
+
+                    await parser.parse("yes_no", value);
                     // Create new intent using question and add response using answer.
                     return dialogflow.add_intent({
                         name: context.confirmed.question,

@@ -12,6 +12,7 @@ const sessions_client = new dialogflow.SessionsClient({
 const session_path = sessions_client.sessionPath(process.env.GOOGLE_PROJECT_ID, process.env.GOOGLE_PROJECT_ID);
 const language = "ja";
 const structjson = require("./structjson");
+Promise = require("bluebird");
 
 module.exports = class ServiceParser {
     static extract(param_key, value){
@@ -39,11 +40,6 @@ module.exports = class ServiceParser {
     }
 
     static parse(param_key, value){
-        debug(`param_key=${param_key}, value=${value}`);
-        if (["はい", "Yes","OK","正"].indexOf(value) < 0) {
-            debug(`false に...`);
-            return Promise.reject(null);
-        }
         return sessions_client.detectIntent({
             session: session_path,
             queryInput: {
@@ -58,9 +54,9 @@ module.exports = class ServiceParser {
             );
 
             if (parameters.fields[param_key] && parameters.fields[param_key][parameters.fields[param_key].kind]){
-                return Promise.resolve(parameters.fields[param_key][parameters.fields[param_key].kind]);
+                return parameters.fields[param_key][parameters.fields[param_key].kind];
             }
-            return Promise.reject();
+            return null;
         })
     }
 }
