@@ -35,11 +35,11 @@ module.exports = class SkillEscalation {
                 //console.log('bot.plugin.length:',bot.plugin.length);
                 //bot.plugin.forEach (msgr => console.log(msgr));
                 if(!bot.plugin){
-                    response.displayName ='お客様1';
+                    //response.displayName ='お客様1';
                     return Promise.resolve('名前未明お客様2');
                 }
                 if(!bot.plugin.line){
-                    response.displayName ='お客様2';
+                    //response.displayName ='お客様2';
                     return Promise.resolve('名前未明お客様2');
                 }
                 return bot.plugin.line.sdk.getProfile(bot.extract_sender_id());
