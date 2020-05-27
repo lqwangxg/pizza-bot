@@ -33,8 +33,8 @@ module.exports = class SkillHumanResponse {
                     return parser.parse("yes_no", value);
                 },
                 reaction: (error, value, bot, event, context) => {
-                    if (error) return Promise.resolve();
-                    if (value === "いいえ") return Promise.resolve();
+                    if (error) return;
+                    if (["はい", "Yes","OK","正"].indexOf(value) < 0) return;
 
                     // Create new intent using question and add response using answer.
                     return dialogflow.add_intent({
@@ -47,7 +47,6 @@ module.exports = class SkillHumanResponse {
                             type: "text",
                             text: "では新規Q&Aとして追加しておきます。"
                         });
-                        return Promise.resolve();
                     });
                 }
             }
