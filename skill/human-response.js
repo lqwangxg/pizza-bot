@@ -29,12 +29,12 @@ module.exports = class SkillHumanResponse {
                         ]
                     }
                 },
-                parser: (value, bot, event, context, resolve, reject) => {
-                    return parser.parse("yes_no", value, resolve, reject);
+                parser: (value, bot, event, context) => {
+                    return parser.parse("yes_no", value);
                 },
-                reaction: (error, value, bot, event, context, resolve, reject) => {
-                    if (error) return resolve();
-                    if (value === "いいえ") return resolve();
+                reaction: (error, value, bot, event, context) => {
+                    if (error) return Promise.resolve();
+                    if (value === "いいえ") return Promise.resolve();
 
                     // Create new intent using question and add response using answer.
                     return dialogflow.add_intent({
@@ -47,10 +47,8 @@ module.exports = class SkillHumanResponse {
                             type: "text",
                             text: "では新規Q&Aとして追加しておきます。"
                         });
-                        return resolve();
+                        return Promise.resolve();
                     });
-
-                    return resolve();
                 }
             }
         }

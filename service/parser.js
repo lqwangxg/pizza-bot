@@ -38,7 +38,7 @@ module.exports = class ServiceParser {
         })
     }
 
-    static parse(param_key, value, resolve, reject){
+    static parse(param_key, value){
         console.debug('value:', value, 'param_key:', param_key);
         if (typeof value != "string") return Promise.resolve(null);
         if (!value) return Promise.resolve(null);
@@ -57,7 +57,7 @@ module.exports = class ServiceParser {
             );
 
             if (parameters.fields[param_key] && parameters.fields[param_key][parameters.fields[param_key].kind]){
-                return resolve(parameters.fields[param_key][parameters.fields[param_key].kind]);
+                return Promise.resolve(parameters.fields[param_key][parameters.fields[param_key].kind]);
             }
             return Promise.resolve(null);
         })
