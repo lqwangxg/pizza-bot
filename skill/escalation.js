@@ -9,7 +9,7 @@ module.exports = class SkillEscalation {
         this.clear_context_on_finish = (process.env.BOT_EXPRESS_ENV === "test") ? false : true;
     }
 
-    finish(bot, event, context, resolve, reject){
+    async finish(bot, event, context, resolve, reject){
 
         if (!SUPPORTED_MESSAGE_TYPES.includes(event.message.type)){
             debug(`${event.message.type} message type is not supported. We just skip processing this event.`);
