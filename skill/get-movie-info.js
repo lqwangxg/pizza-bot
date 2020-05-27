@@ -7,7 +7,7 @@ module.exports = class GetMovieInfo {
         this.required_parameter = {
             movie: {
                 message_to_confirm: {
-                    type: "template",
+                    type: "text",
                     text: "映画名を教えて下さい。"
                 }
             }
