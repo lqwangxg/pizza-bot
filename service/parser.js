@@ -39,8 +39,9 @@ module.exports = class ServiceParser {
     }
 
     static parse(param_key, value, resolve, reject){
-        if (typeof value != "string") return reject();
-        if (!value) return reject();
+        console.debug('value:', value, 'param_key:', param_key);
+        if (typeof value != "string") return Promise.resolve(null);
+        if (!value) return Promise.resolve(null);
 
         return sessions_client.detectIntent({
             session: session_path,
@@ -58,7 +59,7 @@ module.exports = class ServiceParser {
             if (parameters.fields[param_key] && parameters.fields[param_key][parameters.fields[param_key].kind]){
                 return resolve(parameters.fields[param_key][parameters.fields[param_key].kind]);
             }
-            return reject();
+            return Promise.resolve(null);
         })
     }
 }
