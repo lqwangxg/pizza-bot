@@ -30,7 +30,7 @@ module.exports = class SkillEscalation {
             Promise.resolve()
             .then((response) => {
                 // Get sender's displayName.
-                console.log('bot.plugin:',bot.plugin.toString());
+                console.log('bot.plugin:',bot.plugin);
                 console.log('bot.plugin.length:',bot.plugin.length);
                 bot.plugin.forEach (msgr => console.log(msgr));
                 
