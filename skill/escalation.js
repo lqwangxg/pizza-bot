@@ -9,11 +9,11 @@ module.exports = class SkillEscalation {
         this.clear_context_on_finish = (process.env.BOT_EXPRESS_ENV === "test") ? false : true;
     }
 
-    async finish(bot, event, context, resolve, reject){
+    async finish(bot, event, context){
 
         if (!SUPPORTED_MESSAGE_TYPES.includes(event.message.type)){
             debug(`${event.message.type} message type is not supported. We just skip processing this event.`);
-            return resolve();
+            return Promise.resolve();
         }
 
         let tasks = [];
@@ -87,10 +87,6 @@ module.exports = class SkillEscalation {
             })
         );
 
-        return Promise.all(tasks).then((response) => {
-            return resolve();
-        }).catch((error) => {
-            return reject();
-        });
+        return Promise.all(tasks);
     }
 };

@@ -58,7 +58,7 @@ module.exports = class SkillHumanResponse {
         this.clear_context_on_finish = (process.env.BOT_EXPRESS_ENV === "test") ? false : true;
     }
 
-    async finish(bot, event, context, resolve, reject){
+    async finish(bot, event, context){
         // Promise List.
         let tasks = [];
 
@@ -78,8 +78,6 @@ module.exports = class SkillHumanResponse {
             text: context.confirmed.answer
         }, context.confirmed.user.language));
 
-        return Promise.all(tasks).then((response) => {
-            return resolve();
-        });
+        return Promise.all(tasks);
     }
 };

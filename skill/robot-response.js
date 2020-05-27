@@ -6,8 +6,8 @@ const debug = require("debug")("bot-express:skill");
 ** Just reply the text response provided from NLU.
 */
 module.exports = class SkillSimpleResponse {
-    
-    async finish(bot, event, context, resolve, reject){
+
+    async finish(bot, event, context){
         let message;
         if (context.intent.fulfillment && context.intent.fulfillment.length > 0){
             let offset = Math.floor(Math.random() * (context.intent.fulfillment.length));
@@ -36,8 +36,6 @@ module.exports = class SkillSimpleResponse {
             return resolve();
         }
 
-        return bot.reply(message).then((response) => {
-            return resolve();
-        });
+        await bot.reply(message);
     }
 };
