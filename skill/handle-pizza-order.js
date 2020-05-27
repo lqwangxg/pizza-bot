@@ -52,6 +52,7 @@ module.exports = class HandlePizzaOrder {
     // パラメーターが全部揃ったら実行する処理を記述します。
     async finish(bot, event, context){
         let message = {
+            type: "text",
             text: `${context.confirmed.name} 様、ご注文ありがとうございました！${context.confirmed.pizza}の${context.confirmed.size}サイズを30分以内にご指定の${context.confirmed.address}までお届けに上がります。`
         };
 
