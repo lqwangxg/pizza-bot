@@ -33,7 +33,7 @@ module.exports = class SkillJuminhyo {
                         return;
                     }
 
-                    bot.queue({text: `${value}ですね。OKです。`});
+                    bot.queue({type:"text",text: `${value}ですね。OKです。`});
                 }
             },
             name: {
@@ -90,10 +90,12 @@ module.exports = class SkillJuminhyo {
 
                                     if (value == "はい"){
                                         bot.queue({
+                                            type:"text",
                                             text: "ハイカラなお名前じゃないですか〜。いいですね。"
                                         });
                                     } else {
                                         bot.queue({
+                                            type:"text",
                                             text: "大変失礼しました。ご面倒ですが姓と名を順に教えていただきたく。"
                                         });
                                         bot.collect("lastname");
@@ -103,7 +105,7 @@ module.exports = class SkillJuminhyo {
                         });
                     } else {
                         // We got limited information about Name so going to ask for the user.
-                        bot.queue({text: `すいません、私不勉強なものでどれが姓でどれが名かわかりませんでした。ご面倒ですがそれぞれ順に教えていただきたく。`});
+                        bot.queue({type:"text",text: `すいません、私不勉強なものでどれが姓でどれが名かわかりませんでした。ご面倒ですがそれぞれ順に教えていただきたく。`});
                         bot.collect("lastname");
                     }
                 }
@@ -241,7 +243,7 @@ module.exports = class SkillJuminhyo {
                 reaction: async (error, value, bot, event, context) => {
                     if (error) return;
 
-                    bot.queue({text: `${context.confirmed.lastname} ${value}さん、なかなかナウい名前ですね。`});
+                    bot.queue({type: "text", text: `${context.confirmed.lastname} ${value}さん、なかなかナウい名前ですね。`});
                 }
             },
             street: {
