@@ -33,9 +33,12 @@ module.exports = class SkillHumanResponse {
                     return parser.parse("yes_no", value);
                 },
                 reaction: (error, value, bot, event, context) => {
+                    debug(`error=${error}, value=${value}`);
                     if (error) return;
-                    if (["はい", "Yes","OK","正"].indexOf(value) < 0) return;
-
+                    if (["はい", "Yes","OK","正"].indexOf(value) < 0) {
+                        debug(`false 2に...`);
+                        return;
+                    }
                     // Create new intent using question and add response using answer.
                     return dialogflow.add_intent({
                         name: context.confirmed.question,
