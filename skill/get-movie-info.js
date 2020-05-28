@@ -34,17 +34,11 @@ module.exports = class GetMovieInfo {
           ],
           text: `\uDBC0\uDC84 ${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
       };
-      let tasks = [];
-      bot.queue(message);
+      
       bot.queue({
         "type": "sticker",
         "packageId": "11537",
         "stickerId": "52002734"
-      });
-      bot.queue({
-        "type": "sticker",
-        "packageId": "11537",
-        "stickerId": "52002773"
       });
       bot.queue({
         "type": "image",  
@@ -52,32 +46,11 @@ module.exports = class GetMovieInfo {
         "previewImageUrl": movie.Poster
       });
       bot.queue({
-        "type": "video", 
-        "originalContentUrl": movie.Poster,
-        "previewImageUrl": movie.Poster
-      });
-      bot.queue({
-        "type": "audio",  
-        "originalContentUrl": "https://www.youtube.com/watch?v=9e6KQ7cbcrM",
-        "duration": 60000
-      });
-      bot.queue({
         "type": "location",
         "title": "MBP　SMARTEC株式会社",
         "address": "〒101‐0052 東京都千代田区神田小川町3－22　第三大丸ビル4階",
         "latitude": 35.6963236,
         "longitude": 139.7623093
-      });
-      bot.queue({
-        "type":"uri",
-        "label":movie.Poster,
-        "linkUri":movie.Poster,
-        "area":{
-            "x":0,
-            "y":0,
-            "width":400,
-            "height":300
-        }
       });
       bot.queue({
         "type": "template",
@@ -147,7 +120,6 @@ module.exports = class GetMovieInfo {
         }
       });
 
-      await Promise.all(tasks);
       await bot.reply(message);
     }
 };
