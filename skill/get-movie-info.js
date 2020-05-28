@@ -32,7 +32,7 @@ module.exports = class GetMovieInfo {
               "emojiId": "002"
             }
           ],
-          text: `\uDBC0\uDC84 ${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
+          text: `${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
       };
       
       bot.queue({
