@@ -34,7 +34,7 @@ module.exports = class GetMovieInfo {
           ],
           text: `${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
       };
-      
+      let tasks = [];
       bot.queue({
         "type": "sticker",
         "packageId": "11537",
@@ -53,6 +53,75 @@ module.exports = class GetMovieInfo {
         "longitude": 139.7623093
       });
       
+      bot.queue({
+        "type": "template",
+        "altText": "this is a carousel template",
+        "template": {
+            "type": "carousel",
+            "columns": [
+                {
+                    "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+                    "imageBackgroundColor": "#FFFFFF",
+                    "title": "this is menu",
+                    "text": "description",
+                    "defaultAction": {
+                        "type": "uri",
+                        "label": "View detail",
+                        "uri": "http://example.com/page/123"
+                    },
+                    "actions": [
+                        {
+                            "type": "postback",
+                            "label": "Buy",
+                            "data": "action=buy&itemid=111"
+                        },
+                        {
+                            "type": "postback",
+                            "label": "Add to cart",
+                            "data": "action=add&itemid=111"
+                        },
+                        {
+                            "type": "uri",
+                            "label": "View detail",
+                            "uri": "http://example.com/page/111"
+                        }
+                    ]
+                },
+                {
+                    "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                    "imageBackgroundColor": "#000000",
+                    "title": "this is menu",
+                    "text": "description",
+                    "defaultAction": {
+                        "type": "uri",
+                        "label": "View detail",
+                        "uri": "http://example.com/page/222"
+                    },
+                    "actions": [
+                        {
+                            "type": "postback",
+                            "label": "Buy",
+                            "data": "action=buy&itemid=222"
+                        },
+                        {
+                            "type": "postback",
+                            "label": "Add to cart",
+                            "data": "action=add&itemid=222"
+                        },
+                        {
+                            "type": "uri",
+                            "label": "View detail",
+                            "uri": "http://example.com/page/222"
+                        }
+                    ]
+                }
+            ],
+            "imageAspectRatio": "rectangle",
+            "imageSize": "cover"
+        }
+      });
+
+      await Promise.all(tasks);
       await bot.reply(message);
     }
 };
