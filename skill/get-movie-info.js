@@ -35,40 +35,40 @@ module.exports = class GetMovieInfo {
           text: `\uDBC0\uDC84 ${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
       };
       let tasks = [];
-      tasks.push(bot.push(message));
-      tasks.push(bot.push({
+      bot.queue(message);
+      bot.queue({
         "type": "sticker",
         "packageId": "11537",
         "stickerId": "52002734"
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type": "sticker",
         "packageId": "11537",
         "stickerId": "52002773"
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type": "image",  
         "originalContentUrl": movie.Poster,
         "previewImageUrl": movie.Poster
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type": "video", 
         "originalContentUrl": movie.Poster,
         "previewImageUrl": movie.Poster
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type": "audio",  
         "originalContentUrl": "https://www.youtube.com/watch?v=9e6KQ7cbcrM",
         "duration": 60000
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type": "location",
         "title": "MBP　SMARTEC株式会社",
         "address": "〒101‐0052 東京都千代田区神田小川町3－22　第三大丸ビル4階",
         "latitude": 35.6963236,
         "longitude": 139.7623093
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type":"uri",
         "label":movie.Poster,
         "linkUri":movie.Poster,
@@ -78,8 +78,8 @@ module.exports = class GetMovieInfo {
             "width":400,
             "height":300
         }
-      }));
-      tasks.push(bot.push({
+      });
+      bot.queue({
         "type": "template",
         "altText": "this is a carousel template",
         "template": {
@@ -145,8 +145,8 @@ module.exports = class GetMovieInfo {
             "imageAspectRatio": "rectangle",
             "imageSize": "cover"
         }
-      }));
-      
+      });
+
       await Promise.all(tasks);
       await bot.reply(message);
     }
