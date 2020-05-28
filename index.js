@@ -23,6 +23,13 @@ server.use("/webhook", bot_express({
         line: {
             channel_id: process.env.LINE_CHANNEL_ID,
             channel_secret: process.env.LINE_CHANNEL_SECRET
+        },
+        webclient: {
+            org_id: process.env.WEBCLIENT_ORG_ID
+        },
+        facebook:{
+            app_secret: process.env.FACEBOOK_APP_SECRET,
+            page_access_token: process.env.FACEBOOK_PAGE_ACCESS_TOKEN
         }
     },
     nlu: {
