@@ -20,18 +20,6 @@ module.exports = class GetMovieInfo {
       let movie = await movie_service.getDetail(context.confirmed.movie.toString());
       let message = {
           type: "text",
-          "emojis": [
-            {
-              "index": 0,
-              "productId": "5ac1bfd5040ab15980c9b435",
-              "emojiId": "001"
-            },
-            {
-              "index": 13,
-              "productId": "5ac1bfd5040ab15980c9b435",
-              "emojiId": "002"
-            }
-          ],
           text: `${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
       };
       let tasks = [];
