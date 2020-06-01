@@ -25,10 +25,10 @@ module.exports = class GetMovieInfo {
           text: text,
           fulfillmentText: text
       };
-      event.queryResult.fulfillmentMessages.text = message;
-      context.replyMessage = message;
+      //event.queryResult.fulfillmentMessages.text = message;
+      //context.replyMessage = message;
       // queueMessage(bot, movie);
-      return await bot.reply(message);
+      context.replyMessage = await bot.reply(message);
     }
     
     async queueMessage(bot, movie){
