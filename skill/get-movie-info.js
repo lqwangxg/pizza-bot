@@ -22,7 +22,7 @@ module.exports = class GetMovieInfo {
           type: "text",
           text: `${movie.Title} is a ${movie.Actors} starer ${movie.Genre} movie, released in ${movie.Year}. It was directed by ${movie.Director}`
       };
-      context.replyMessage = message;
+      
       // queueMessage(bot, movie);
       await bot.reply(message);
     }
