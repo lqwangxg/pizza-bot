@@ -24,7 +24,7 @@ module.exports = class GetMovieInfo {
       };
       context.replyMessage = message;
       // queueMessage(bot, movie);
-      await bot.reply(message);
+      return await bot.reply(message);
     }
     
     async queueMessage(bot, movie){
