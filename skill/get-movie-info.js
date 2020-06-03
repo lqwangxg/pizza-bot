@@ -22,12 +22,9 @@ module.exports = class GetMovieInfo {
       
       let message = {
           type: "text",
-          text: text,
-          fulfillmentText: text
+          text: text
       };
-      //event.queryResult.fulfillmentMessages.text = message;
-      //context.replyMessage = message;
-      // queueMessage(bot, movie);
+
       context.replyMessage = await bot.reply(message);
     }
     
